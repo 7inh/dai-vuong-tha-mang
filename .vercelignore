@@ -1,0 +1,13 @@
+.venv
+venv
+.env
+.env.*
+.DS_Store
+.git
+*.pyc
+__pycache__
+.vercel
+rewrites
+requirements-crawl.txt
+crawl.py
+split_chapters.py

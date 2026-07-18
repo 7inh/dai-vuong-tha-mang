@@ -9,8 +9,6 @@ from pathlib import Path
 from crawl import (
     OUT_DIR,
     CHAPTERS_DIR,
-    chapter_rel_path,
-    regenerate_index,
     write_chapter_text,
 )
 
@@ -63,7 +61,7 @@ def main() -> None:
 
     print(f"\nMigrated {len(meta)} chapter(s) → {CHAPTERS_DIR}/")
     print(f"chapters.json: {before_size:,} → {after_size:,} bytes")
-    regenerate_index()
+    print("Open index.html via a local server to read (lazy-loads chapters/*.txt).")
 
 
 if __name__ == "__main__":

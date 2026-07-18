@@ -15,7 +15,10 @@ ENV/
 # macOS noise
 .DS_Store
 
-# Generated crawler output
-index.html
-chapters.json
+# Vercel
+.vercel/
+
+# Legacy crawler helpers (not part of the static site)
 rewrites/
+.vercel
+.env*
