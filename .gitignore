@@ -1,0 +1,21 @@
+# Python bytecode and tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# macOS noise
+.DS_Store
+
+# Generated crawler output
+index.html
+chapters.json
+rewrites/
