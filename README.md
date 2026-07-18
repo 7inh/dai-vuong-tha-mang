@@ -28,9 +28,9 @@ python crawl.py --sync
 
 ## Deploy to Vercel
 
-Live: **https://dai-vuong-tha-mang.vercel.app** (also **https://dai-vuong-tha-mang-reader.vercel.app** from an earlier deploy)
+Live: **https://dai-vuong-tha-mang.vercel.app**
 
-Static site — no build step. Tracked in GitHub [`7inh/dai-vuong-tha-mang`](https://github.com/7inh/dai-vuong-tha-mang); Vercel deploys on push to `main`.
+Static site — no build step. Tracked in GitHub [`7inh/dai-vuong-tha-mang`](https://github.com/7inh/dai-vuong-tha-mang); Vercel project `dai-vuong-tha-mang` deploys on every push to `main`.
 
 ### Sync → GitHub → Vercel
 
