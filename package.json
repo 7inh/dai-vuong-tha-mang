@@ -1,1 +1,1 @@
-{"name":"dai-vuong-tha-mang-reader","private":true}
+{"name":"dai-vuong-tha-mang-reader","private":true,"dependencies":{"@vercel/analytics":"^2.0.1"}}

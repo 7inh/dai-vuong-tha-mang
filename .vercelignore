@@ -11,3 +11,5 @@ rewrites
 requirements-crawl.txt
 crawl.py
 split_chapters.py
+node_modules
+analytics.js
