@@ -61,7 +61,7 @@ def main() -> None:
 
     print(f"\nMigrated {len(meta)} chapter(s) → {CHAPTERS_DIR}/")
     print(f"chapters.json: {before_size:,} → {after_size:,} bytes")
-    print("Open index.html via a local server to read (lazy-loads chapters/*.txt).")
+    print("Open via Next.js: npm run dev (reads chapters/*.txt + chapters.json)")
 
 
 if __name__ == "__main__":

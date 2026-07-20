@@ -1,15 +1,23 @@
-# Đại Vương Tha Mạng — offline / Vercel reader
+# Đại Vương Tha Mạng — Next.js reader
 
-Static Vietnamese novel reader. Chapter text lives in `chapters/*.txt`; the browser loads `chapters.json` then fetches chapters on demand.
+Vietnamese novel reader built with Next.js. Chapter text lives in `chapters/*.txt`; metadata in `chapters.json`. Chapter pages are statically generated at build time for fast loading and Safari Reader support.
 
 ## Local preview
 
-Serve the project root (required so `fetch()` works — do not open `index.html` as a `file://` URL):
+```bash
+npm install
+npm run dev        # http://localhost:3000 (first page load may take ~20s)
+```
+
+- Single chapter: `/chuong/1`
+- Range reading: `/doc?from=1&to=5`
+- Safari Reader: open any `/chuong/N` page — content is server-rendered semantic HTML
+
+Production build:
 
 ```bash
-cd dai-vuong-tha-mang-reader
-python3 -m http.server 8080
-# open http://localhost:8080
+npm run build      # generates ~1331 static /chuong/[n] pages
+npm run start
 ```
 
 ## Crawl more chapters
@@ -30,12 +38,11 @@ python crawl.py --sync
 
 Live: **https://dai-vuong-tha-mang.vercel.app**
 
-Static site — no build step. Tracked in GitHub [`7inh/dai-vuong-tha-mang`](https://github.com/7inh/dai-vuong-tha-mang); Vercel project `dai-vuong-tha-mang` deploys on every push to `main`.
+Next.js app — Vercel runs `next build` on every push to `main`.
 
 ### Sync → GitHub → Vercel
 
 ```bash
-# after crawling more chapters
 python crawl.py --sync
 git add chapters chapters.json
 git commit -m "Add crawled chapters"
@@ -49,15 +56,15 @@ npx vercel link --project dai-vuong-tha-mang   # once
 npx vercel --prod                              # manual deploy
 ```
 
-
 ## Project layout
 
 | Path | Role |
 |------|------|
-| `index.html` | Lazy-load reader UI (committed, not overwritten by crawl) |
+| `app/` | Next.js App Router pages and layout |
+| `components/` | Reader UI (Sidebar, ChapterNav, ChapterBody) |
+| `lib/chapters.ts` | Read `chapters.json` + txt files from disk |
 | `chapters.json` | Metadata: `n`, `title`, `path`, … |
 | `chapters/chuong-N.txt` | Chapter bodies |
 | `crawl.py` | Fetches chapters from the source site |
 | `requirements-crawl.txt` | Python deps for the crawler (not used by Vercel) |
-| `vercel.json` | Static site + cache / charset headers |
 | `.vercelignore` | Keeps crawl tooling out of deployments |

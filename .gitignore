@@ -18,7 +18,12 @@ ENV/
 # Vercel
 .vercel/
 
+# Next.js
+.next/
+out/
+
 # Legacy crawler helpers (not part of the static site)
 rewrites/
 .vercel
 .env*
+node_modules/

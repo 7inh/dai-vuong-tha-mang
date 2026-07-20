@@ -196,7 +196,7 @@ def serialize_chapters(chapters: list[dict]) -> list[dict]:
 
 
 def save_library(chapters: list[dict], story_title: str | None = None) -> None:
-    """Write chapter txt files + chapters.json. Does not touch index.html (static reader)."""
+    """Write chapter txt files + chapters.json. Does not touch the Next.js app."""
     del story_title  # kept for call-site compatibility
     meta = serialize_chapters(chapters)
     for m, ch in zip(meta, chapters):
@@ -358,7 +358,7 @@ def main() -> None:
 
     print(f"\nWrote {OUT_DIR / 'chapters.json'}")
     print(f"Wrote chapter text under {CHAPTERS_DIR}/")
-    print(f"(index.html is static — open it to read; it lazy-loads chapters/*.txt)")
+    print(f"(Run npm run build to regenerate Next.js chapter pages)")
     print(
         f"Crawled: {args.start}–{args.end}; fetched={fetched} skipped={skipped} "
         f"failed={len(failed)}; library now has {len(chapters)} chapter(s)"
