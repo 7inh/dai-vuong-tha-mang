@@ -152,7 +152,8 @@ body {
   z-index: 2;
 }
 .reader-nav-link,
-.reader-nav a.reader-nav-link {
+.reader-nav a.reader-nav-link,
+.reader-nav button.reader-nav-link {
   border: 1px solid var(--border);
   background: var(--panel);
   color: var(--ink);
@@ -165,7 +166,8 @@ body {
   display: inline-block;
 }
 .reader-nav-link:hover,
-.reader-nav a.reader-nav-link:hover {
+.reader-nav a.reader-nav-link:hover,
+.reader-nav button.reader-nav-link:hover {
   border-color: var(--accent);
   color: var(--accent);
 }

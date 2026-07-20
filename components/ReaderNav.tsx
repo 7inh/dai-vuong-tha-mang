@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useToc } from "@/components/Sidebar";
 
 type NavLink = {
   href: string;
@@ -12,6 +15,8 @@ type ReaderNavProps = {
 };
 
 export function ReaderNav({ prev, next, summary }: ReaderNavProps) {
+  const { openToc } = useToc();
+
   return (
     <nav className="reader-nav" aria-label="Điều hướng chương">
       {prev ? (
@@ -22,9 +27,13 @@ export function ReaderNav({ prev, next, summary }: ReaderNavProps) {
         <span className="reader-nav-link disabled">← Trước</span>
       )}
       {summary ? <span className="range-summary">{summary}</span> : null}
-      <Link className="reader-nav-link reader-nav-link-muted" href="/chuong/1">
+      <button
+        type="button"
+        className="reader-nav-link reader-nav-link-muted"
+        onClick={openToc}
+      >
         Mục lục
-      </Link>
+      </button>
       {next ? (
         <Link className="reader-nav-link" href={next.href}>
           {next.label}

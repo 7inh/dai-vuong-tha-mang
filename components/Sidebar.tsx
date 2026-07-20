@@ -2,8 +2,18 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import type { ChapterMeta } from "@/lib/types";
+
+const TocContext = createContext<{ openToc: () => void } | null>(null);
+
+export function useToc() {
+  const ctx = useContext(TocContext);
+  if (!ctx) {
+    throw new Error("useToc must be used within ReaderShell");
+  }
+  return ctx;
+}
 
 type SidebarProps = {
   chapters: ChapterMeta[];
@@ -129,19 +139,23 @@ export function ReaderShell({
 }) {
   const [open, setOpen] = useState(false);
 
+  const openToc = () => setOpen(true);
+
   return (
-    <div className="layout">
-      <SidebarPanel chapters={chapters} open={open} onClose={() => setOpen(false)} />
-      <main className="main">
-        <button
-          type="button"
-          className="menu-toggle"
-          onClick={() => setOpen((value) => !value)}
-        >
-          Mục lục
-        </button>
-        {children}
-      </main>
-    </div>
+    <TocContext.Provider value={{ openToc }}>
+      <div className="layout">
+        <SidebarPanel chapters={chapters} open={open} onClose={() => setOpen(false)} />
+        <main className="main">
+          <button
+            type="button"
+            className="menu-toggle"
+            onClick={() => setOpen((value) => !value)}
+          >
+            Mục lục
+          </button>
+          {children}
+        </main>
+      </div>
+    </TocContext.Provider>
   );
 }
