@@ -10,4 +10,4 @@ export type Chapter = ChapterMeta & {
   paragraphs: string[];
 };
 
-export const STORY_TITLE = "Đại Vương Tha Mạng";
+export const STORY_TITLE = "";
